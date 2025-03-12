@@ -22,8 +22,8 @@ class ParticleFilter:
 
     def predict(self, velocity=(0,0)):
 
-        self.particles[:, 0] += velocity[0] 
-        self.particles[:, 1] += velocity[1]
+        self.particles[:, 0] += velocity[0] + np.random.normal(0, self.motion_std, size=self.num_particles)
+        self.particles[:, 1] += velocity[1] + np.random.normal(0, self.motion_std, size=self.num_particles)
 
     def update(self, measured_x, measured_y):
 
